@@ -15,7 +15,7 @@
 
         $valid = true;
 
-        if (empty($id_usuario)) {
+        if (empty($nombre_usuario)) {
 			$$nombre_usuarioError = 'Porfavor Ingresa tu nombre';
 			$valid = false; 
 		}

@@ -1,6 +1,47 @@
 <?php
-    require 'dataBase.php'
+    require 'dataBase.php';
     
+      // POST METHOD
+      if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        
+        $id_huellaError = null;
+        $id_dispositivoError = null;
+        $id_usuarioError = null;
+        $hrsError = null;
+        $totalError = null;
+
+        
+        $id_usuario = $_POST['id_usuario'];
+		$nombre_usuario = $_POST['nombre_usuario'];
+        $contraseña = $_POST['contraseña'];
+
+        $id_huella = $_POST['id_huella'];
+        $id_dispositivo = $_POST['id_dispositivo'];
+        $id_usuario = $_POST['id_usuario'];
+        $horas = $_POST['id_usuario'];
+        $total = null;
+
+
+        $valid = true;
+
+        if (empty($nombre_usuario)) {
+			$$nombre_usuarioError = 'Porfavor Ingresa tu nombre';
+			$valid = false; 
+		}
+		if (empty( $contraseña)) {
+			$contraseña_error = 'Porfavor Ingresa una contraseña';
+			$valid = false;
+		}
+
+
+        // Verify credentials
+        $pdo = Database::connect();
+        $sql = "SELECT * FROM usuario WHERE nombre_usuario = ? AND contraseña = ?";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($nombre_usuario, $contraseña));
+        Database::disconnect();
+      
+    }
 ?>
 
 
@@ -28,6 +69,8 @@
             </nav>
         </header>
         <main> 
+            <?php
+            ?>
             <div class="Card-1">
                 <a class="Btns Btn-1" href="../PHP/LoginUsuarios.php">Iniciar sesión</a>
                 <a class="Btns Btn-2" href="../PHP/RegistroUsuarios.php">Registrarse</a>
@@ -66,6 +109,7 @@
                     </table>
                 </form>
             </div>
+            ?>
         </main>
     </body>
 </html>

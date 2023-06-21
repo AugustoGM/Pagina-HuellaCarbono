@@ -134,7 +134,7 @@
 
 
 					<div>
-						<input class="btn btn-primary btn-block" type="submit" value="Registrarse" id="submit" name="submit">
+					<?php echo '<a class="Btn__Green" href="calculoHuella.php?id_usuario='.$row['id_usuario'].'&type=al">Ver</a>' ?>
 					</div>
 
 					<div>
